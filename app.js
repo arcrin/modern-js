@@ -1,49 +1,35 @@
-const firstName = "William";
-const lastName = "Johnson";
-const age = 36;
-const str = "Hello there the name is Arcia";
-const tags = "web design, web development, programming";
+const name = "John";
+const age = 30;
+const job = "Web Developer";
+const city = "Miami";
+let html;
 
-let val;
+// With template strings (es5)
+html = '<ul><li>Name: ' + name + '</li><li>Age: ' + age + '</li><li>Job: ' + job+ '</li><li>City: ' + city + '</li></ul>';
 
-val = firstName + lastName;
+html = '<ul>' +
+    '<li>Name: ' + name + '</li>' +
+    '<li>Age: ' + age + '</li>' +
+    '<li>Job: ' + job + '</li>' +
+    '<li>City: ' + city + '</li>' ;
 
-val = firstName + " " + lastName;
+function hello(){
+    return "hello";
+}
 
-val = "Brad ";
-val += "Traversy";
-
-val = "Hello, the name is " + firstName + ' and I am ' + age;
-
-val = "That's awesome, I can't wait";
-
-val = firstName.length;
-
-val = firstName.concat(" ", lastName);
-
-val = firstName.toUpperCase();
-val = firstName.toLowerCase();
-
-val = firstName[0];
-
-val = firstName.indexOf('l');
-val = firstName.lastIndexOf('l');
-
-val = firstName.charAt('2');
-
-val = firstName.charAt(firstName.length - 1);
-
-val = firstName.substring(0, 4);
-
-val = firstName.slice(-3);
-
-val = str.split(" ");
-
-val = tags.split(",")
-
-val = str.replace("Arcia", "Jack");
-
-val = str.includes("foo");
+// With template strings (es6)
+html = `
+<ul>
+    <li>Name: ${name}</li>
+    <li>Age: ${age}</li>
+    <li>Job: ${job}</li>
+    <li>City: ${city}</li>
+    <li>${2 + 2}</li>
+    <li>${hello()}</li>
+    <li>${age > 30 ? "Over 30" : "Under 30"}</li>
+</ul>
+`;
 
 
-console.log(val);
+
+document.body.innerHTML = html;
