@@ -3,7 +3,7 @@ const lastName = "Johnson";
 const age = 36;
 const str = "Hello there the name is Arcia";
 const tags = "web design, web development, programming";
-const val1 = "This is the home branch";
+const val1 = "This is the home master branch";
 
 
 let val;
