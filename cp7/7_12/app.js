@@ -6,7 +6,7 @@ document.getElementById('button3').addEventListener('click', getExternal);
 
 // Get local text file data
 function getText() {
-  fetch('text.txt')
+  fetch('test.txt')
     .then(res => res.text())
     .then(data => {
       console.log(data);
@@ -26,6 +26,21 @@ function getJson() {
         output += `<li>${post.title}</li>`;
       });
       document.getElementById('output').innerHTNL = output;
+    })
+    .catch(err => console.log(err));
+}
+
+// Get from external API
+function getExternal() {
+  fetch('https://api.github.com/users')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      let output = '';
+      data.forEach(function(user) {
+        output += `<li>${user.login}</li>`;
+      });
+      document.getElementById('output').innerHTML = output;
     })
     .catch(err => console.log(err));
 }
