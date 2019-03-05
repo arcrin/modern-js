@@ -1,27 +1,15 @@
-/**
- * EasyHTTP Library
- * Library for making HTTP requests
- * 
- * @version 2.0.0
- * @author Arc Rin
- * @license MIT
- * 
- */
-
- class EasyHTTP {
-  // Make an HTTP GET Request
+class EasyHTTP {
   get(url) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       fetch(url)
         .then(res => res.json())
         .then(data => resolve(data))
-        .catch(err => reject(err));
-    });
+        .catch(reject(err))
+    })
   }
-  
-  // Make an HTTP POST Request
+
   post(url, data) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       fetch(url, {
         method: 'POST',
         headers: {
@@ -31,13 +19,12 @@
       })
       .then(res => res.json())
       .then(data => resolve(data))
-      .catch(err => reject(err))
-    });
+      .catch(err => reject(err));
+    })
   }
 
-  // Make an HTTP PUT Request
   put(url, data) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject){
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -46,23 +33,29 @@
         body: JSON.stringify(data)
       })
       .then(res => res.json())
-      .then(data => resolve(data))
+      .then(data => resolce(data))
       .catch(err => reject(err));
-    });
+    })
   }
 
-  // Make an HTTP DELETE Request
   delete(url) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       fetch(url, {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json'
         }
       })
-      .then(res => res.json())
-      .then(() => resolve('Resource Deleted...'))
+      .then(res => {
+        console.log(res);
+        if(res.status === 200) {
+          return res.json();
+        } else {
+          throw Error(res.status)
+        }
+      })
+      .then((data) => resolve(data))
       .catch(err => reject(err));
-    });
+    })
   }
- }
+}

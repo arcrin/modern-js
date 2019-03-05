@@ -4,33 +4,32 @@ const posts = [
 ];
 
 function createPost(post) {
-  return new Promise(function(resolve, reject){
-    setTimeout(function(){
+  return new Promise(function(resolve, reject) {
+    setTimeout(() => {
       posts.push(post);
 
       const error = false;
-
       if(!error) {
         resolve();
       } else {
-        reject('Error: Something went wrong');
+        reject("Error creating post");
       }
     }, 2000);
-  });
+  })
 }
 
-function getPosts() {
-  setTimeout(function() {
-    let output = '';
-    posts.forEach(function(post){
-      output += `<li>${post.title}</li>`;
-    });
-    document.body.innerHTML = output;
-  }, 1000);
+function getPosts(){
+  let output = '';
+  posts.forEach(post => {
+    output += `<li>${post.title}: ${post.body}</li>`;
+  })
+  document.getElementById('posts').innerHTML = output;
 }
 
-createPost({title: 'Post Three', body: 'This is post three'})
-.then(getPosts)
-.catch(function(err){
-  console.log(err);
-})
+
+getPosts();
+createPost({title: 'New post', body: 'meaningless emotional piece'})
+  .then(getPosts)
+  .catch((err) => {
+    console.log(err);
+  })
