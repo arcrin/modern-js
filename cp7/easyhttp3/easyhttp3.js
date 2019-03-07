@@ -11,9 +11,9 @@ class EasyHTTP {
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(data)
+      boyd: JSON.stringify(data)
     });
-
+    console.log(response);
     const resData = await response.json();
     return resData;
   }
@@ -27,7 +27,8 @@ class EasyHTTP {
       body: JSON.stringify(data)
     });
 
-    const resData = await response.json();
+    console.log(response);
+    const resData = response.json();
     return resData;
   }
 
@@ -36,9 +37,10 @@ class EasyHTTP {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
-      }
+      },
     });
 
+    console.log(response);
     const resData = await 'Resource Deleted';
     return resData;
   }
