@@ -26,3 +26,8 @@ console.log(result);
 str = 'placeholder placeholder test placeholder placeholder';
 result = str.search(re);
 console.log(result);
+
+// replace() - Returns new string with some or all matches of a pattern
+str = 'placeholder placeholder test placeholder placeholder';
+const newStr = str.replace(re, 'whatever');
+console.log(newStr);
