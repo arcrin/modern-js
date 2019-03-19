@@ -76,7 +76,7 @@ const ItemCtrl = (function(){
         ID = 0;
       }
       calories = parseInt(calories);
-      newItem = new Item(ID, name, calories);
+      const newItem = new Item(ID, name, calories);
       data.items.push(newItem);
       return newItem;
     },
